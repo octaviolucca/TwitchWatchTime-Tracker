@@ -1,0 +1,180 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 5px;
+  background-color: #333;
+  color: #fff;
+  width: 337px;
+  height: 250px;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  text-align: center;
+  position: relative;
+}
+
+#optionsButton {
+  top: 50%;
+  right: 0;
+  font-size: 20px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  align: center;
+}
+
+#optionsButton:hover {
+  color: #ccc;
+}
+
+.channelTime {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 4px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  //width: 100%;
+}
+
+
+.channelTime:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.channelName {
+  font-weight: bold;
+  min-width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.channelTime > span {
+  margin-right: 1px;
+  width: calc(20% - 1px); /* Adjust the width value here */
+}
+
+
+#channelTimes {
+  height: 150px; /* Adjust the height value as desired */
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.name {
+  width: 107px;
+}
+
+.today {
+  width: 55px;
+}
+
+.week {
+  width: 56px;
+}
+
+.month {
+  width: 53px;
+}
+
+#channelTimes::-webkit-scrollbar {
+  display: none;
+}
+
+#channelTimes {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.totalTimeContainer {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.currentChannel {
+  background-color: #6441a5 !important;
+}
+
+.btnDeleteData{
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.btnDeleteData:hover{
+  color: #d62828;
+}
+
+.btnDownloadData{
+  font-family: Roboto, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-color: transparent;
+  padding: 10px 10px;
+  border: none;
+  display: flex;
+  flex-direction:row-reverse;
+  align-items: center;
+  cursor: pointer;
+}
+
+.btnDownloadData:hover{
+  color: #90EE90;
+}
+
+.backButton{
+  font-weight: 100;
+  font-size: 14px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  align: left;
+}
+
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: -9px;
+}
+
+
+.titleOptions{
+  font-size: 30px;
+  margin-top: 0px;
+  text-align: center;
+  position: relative;
+}
+
+.options-links {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.open-source-text {
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  margin: 10px;
+}

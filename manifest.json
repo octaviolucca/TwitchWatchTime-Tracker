@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "TwitchWatchTime Tracker",
+  "version": "1.1",
+  "description": "Tracks the amount of time spent watching twitch live streams",
+  "permissions": ["tabs", "storage", "downloads"],
+  "content_scripts": [
+    {
+      "matches": ["*://*.twitch.tv/*"],
+      "js": ["content-script.js"]
+    }
+  ],
+  
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+
+  "background": {
+    "service_worker" : "background-script.js"
+  },
+  "action": {
+    "default_icon": {
+      "16": "images/icon-16.png",
+      "32": "images/icon-32.png",
+      "48": "images/icon-48.png",
+      "128": "images/icon-128.png"
+    },
+    "default_popup": "popup.html"
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="popup.css">
+  <style>
+    body {
+      width: 337px;
+      height: 250px;
+    }
+    .page {
+      display: none;
+    }
+    .active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div id="mainPage" class="page active">
+    <h1>
+      <img src="images/twitch_logo.png" alt="logo"/>
+      &nbsp;Watch time tracker
+      <button id="optionsButton">&#9881;</button>
+    </h1>
+    <div class="description">
+      <span class="name">Name:</span>
+      <span class="today">Today</span>
+      <span class="week">Week</span>
+      <span class="month" >Month</span>
+      <span>All time</span>
+    </div>
+    <div id="totalTimes"></div>
+    <div id="channelTimes"></div>
+  </div>
+  <div id="optionsPage" class="page">
+    <button id="backToMain" class="backButton">&#x2190;</button> 
+    <h1 class="titleOptions"> Options Page</h1>
+    
+
+    <div class="buttons-container">
+      <button id="deleteData" class="btnDeleteData"> &#x1f5d1; Delete Data</button>
+      <button id="downloadData" class="btnDownloadData">&#x2193; Download Data</button>
+      <input type="file" id="importData" style="display:none;" />
+      <label for="importData" class="btnDownloadData">&#8593; Import Data</label>
+    </div>
+
+    <div>
+      <p class="open-source-text">
+        This is an open-source application, and we encourage you to contribute, report problems, or suggest improvements. Visit our GitHub repository bellow to learn more about how you can get involved.
+      </p>      
+    </div>
+
+    <div class="options-links">
+      <a href="https://github.com/octaviolucca/TwitchWatchTime-Tracker" target="_blank">
+        <img src="images/github-logo.png" alt="GitHub" width="46" height="46" />
+      </a>
+      <a href="https://chrome.google.com/webstore/detail/twitchwatchtime-tracker/nhiofmohbhgelkmmljjnhfnlndljepoh" target="_blank">
+        <img src="images/chrome-store.png" alt="GitHub" width="46" height="46" />
+      </a>
+    </div>
+
+  </div>
+  <script src="popup-script.js"></script>
+</body>
+</html>
