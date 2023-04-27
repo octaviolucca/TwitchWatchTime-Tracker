@@ -77,18 +77,27 @@ function importData(event) {
 
 // Downloads the data stored in the browser's local storage as a JSON file
 function downloadData() {
-  chrome.storage.local.get(null, function(items) { // null implies all items
+  chrome.storage.local.get(null, function (items) {
     // Convert object to a string.
     var result = JSON.stringify(items);
 
+    // Custom function to convert a Unicode string to base64
+    function b64EncodeUnicode(str) {
+      return btoa(
+        encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) {
+          return String.fromCharCode("0x" + p1);
+        })
+      );
+    }
     // Save as file
-    var url = 'data:application/json;base64,' + btoa(result);
+    var url = "data:application/json;base64," + b64EncodeUnicode(result);
     chrome.downloads.download({
-        url: url,
-        filename: 'twitchWatchTime_data.json'
+      url: url,
+      filename: "twitchWatchTime_data.json",
     });
   });
 }
+
 
 // Deletes all data stored in the browser's local storage
 function deleteData() {
