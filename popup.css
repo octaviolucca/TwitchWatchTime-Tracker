@@ -174,7 +174,14 @@ h1 {
 
 .open-source-text {
   color: #fff;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
-  margin: 10px;
+  margin: 4px;
+}
+
+.checkMuteTracking{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
 }

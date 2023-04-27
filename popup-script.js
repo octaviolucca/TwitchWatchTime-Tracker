@@ -33,6 +33,24 @@ document.getElementById("backToMain").addEventListener("click", () => {
   mainPage.classList.add("active");
 });
 
+
+const muteCheckbox = document.querySelector('#muteTracking');
+
+muteCheckbox.addEventListener('change', () => {
+  chrome.storage.local.set({ trackMutedStreams: muteCheckbox.checked });
+});
+
+chrome.storage.local.get('trackMutedStreams', (data) => {
+  if (data.hasOwnProperty('trackMutedStreams')) {
+    muteCheckbox.checked = data.trackMutedStreams;
+  } else {
+    // Set a default value if trackMutedStreams is not yet stored
+    muteCheckbox.checked = false;
+    chrome.storage.local.set({ trackMutedStreams: false });
+  }
+});
+
+
 // Imports data from a file and updates the browser's local storage
 function importData(event) {
   const file = event.target.files[0];
@@ -149,6 +167,7 @@ function updateDisplay() {
     });
   });
 }
+
 
 
 // Set up the initial display and a recurring interval for updating the display

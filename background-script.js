@@ -58,6 +58,8 @@ chrome.runtime.onStartup.addListener(cleanUpOldData);
 let intervalID;
 
 
+
+
 // Set up a message listener for the contentScriptLoaded event
 // This starts an interval for monitoring active Twitch channels
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -70,9 +72,15 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           chrome.tabs.sendMessage(tab.id, { type: "getChannelInfo" }, (response) => {
             if (chrome.runtime.lastError) {
               clearInterval(intervalID);
-            } else if (response.playing && response.muted) {
-              updateChannelTime(response.channelName, 1);
-            }
+            } else if (response.playing) {
+              chrome.storage.local.get('trackMutedStreams', (data) => {
+                const trackMutedStream = data.trackMutedStreams;
+                if (!response.muted || (response.muted && trackMutedStream)) {
+                  updateChannelTime(response.channelName, 1);
+                }
+              });
+            } 
+
           });
         }, 1000);
       }
@@ -84,20 +92,23 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 // is a Twitch channel and starts a new interval for monitoring the channel
 function handleTabSwitch(tabId) {
   clearInterval(intervalID);
-
   chrome.tabs.get(tabId, (tab) => {
     if (chrome.runtime.lastError) {
       return;
     }
-    
     if (/^https:\/\/www\.twitch\.tv\//.test(tab.url)) {
       intervalID = setInterval(() => {
         chrome.tabs.sendMessage(tabId, { type: "getChannelInfo" }, (response) => {
-          if (chrome.runtime.lastError) {
-            clearInterval(intervalID);
-          } else if (response.playing && response.muted) {
-            updateChannelTime(response.channelName, 1);
-          }
+            if (chrome.runtime.lastError) {
+              clearInterval(intervalID);
+            } else if (response.playing) {
+              chrome.storage.local.get('trackMutedStreams', (data) => {
+                const trackMutedStream = data.trackMutedStreams;
+                if (!response.muted || (response.muted && trackMutedStream)) {
+                  updateChannelTime(response.channelName, 1);
+                }
+              });
+            }
         });
       }, 1000);
     }
