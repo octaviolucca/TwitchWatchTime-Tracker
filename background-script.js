@@ -70,7 +70,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
           chrome.tabs.sendMessage(tab.id, { type: "getChannelInfo" }, (response) => {
             if (chrome.runtime.lastError) {
               clearInterval(intervalID);
-            } else if (response.playing) {
+            } else if (response.playing && response.muted) {
               updateChannelTime(response.channelName, 1);
             }
           });
@@ -95,7 +95,7 @@ function handleTabSwitch(tabId) {
         chrome.tabs.sendMessage(tabId, { type: "getChannelInfo" }, (response) => {
           if (chrome.runtime.lastError) {
             clearInterval(intervalID);
-          } else if (response.playing) {
+          } else if (response.playing && response.muted) {
             updateChannelTime(response.channelName, 1);
           }
         });

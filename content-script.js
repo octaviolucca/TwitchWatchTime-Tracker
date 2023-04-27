@@ -6,7 +6,8 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     const channelLink = document.querySelector("h1.CoreText-sc-1txzju1-0.ScTitleText-sc-d9mj2s-0.jKVhlu.igzOaC.InjectLayout-sc-1i43xsx-0.tNDkq.tw-title");
     const channelName = channelLink ? channelLink.textContent.trim() : "unknown";
     const playing = video && !video.paused;
-    sendResponse({ channelName, playing });
+    const muted = video && !video.muted;
+    sendResponse({ channelName, playing, muted });
   }
 });
 
