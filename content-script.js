@@ -3,7 +3,7 @@
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === "getChannelInfo") {
     const video = document.querySelector("video");
-    const channelLink = document.querySelector("h1.CoreText-sc-1txzju1-0.ScTitleText-sc-d9mj2s-0.jKVhlu.igzOaC.InjectLayout-sc-1i43xsx-0.tNDkq.tw-title");
+    const channelLink = document.querySelector("h1.CoreText-sc-1txzju1-0.ScTitleText-sc-d9mj2s-0.bthLuv.iaMqYH.InjectLayout-sc-1i43xsx-0.kuBPOn.tw-title");                  
     const channelName = channelLink ? channelLink.textContent.trim() : "unknown";
     const playing = video && !video.paused;
     const muted = video.muted;
